@@ -1,11 +1,25 @@
 import { useMachine } from "@xstate/react";
+import { useEffect } from "react";
 import { gameMachine } from "../../machines/gameMachine";
+import { GameEventType } from "../../machines/gameMachine/types";
 import { Button } from "../Button";
 import { GameCompleteScreen } from "../GameCompleteScreen";
 import { GameOverScreen } from "../GameOverScreen";
 import { HomeScreen } from "../HomeScreen";
-export const Game = () => {
+
+export interface PropsType {
+    fastForwardEvents?: GameEventType[];
+}
+export const Game = ({ fastForwardEvents }: PropsType) => {
     const [state, send] = useMachine(gameMachine);
+    useEffect(() => {
+        if (fastForwardEvents) {
+            // NOTE: was a batching bug in x-state when tutorial created
+            fastForwardEvents.forEach((event) => {
+                send(event);
+            });
+        }
+    }, [fastForwardEvents, send]);
 
     if (state.matches("home")) {
         return (
