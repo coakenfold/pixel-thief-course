@@ -34,6 +34,7 @@ export type GameStateType = {
     context: null;
     value:
         | `home`
+        | `playing`
         | `playing.level1`
         | `playing.level2`
         | `playing.level3`

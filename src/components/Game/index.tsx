@@ -17,25 +17,71 @@ export const Game = () => {
         );
     }
     if (state.matches("playing")) {
-        return (
-            <>
-                <p>State: Playing</p>
-                <Button
-                    onClick={() => {
-                        send("PLAYER_DIED");
-                    }}
-                >
-                    PLAYER_DIED
-                </Button>
-                <Button
-                    onClick={() => {
-                        send("PLAYER_GOT_TREASURE");
-                    }}
-                >
-                    PLAYER_GOT_TREASURE
-                </Button>
-            </>
-        );
+        if (state.matches("playing.level1")) {
+            return (
+                <>
+                    <p>State: Playing.level1</p>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_WALKED_THROUGH_DOOR");
+                        }}
+                    >
+                        PLAYER_WALKED_THROUGH_DOOR
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_DIED");
+                        }}
+                    >
+                        PLAYER_DIED
+                    </Button>
+                </>
+            );
+        }
+
+        if (state.matches("playing.level2")) {
+            return (
+                <>
+                    <p>State: Playing.level2</p>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_WALKED_THROUGH_DOOR");
+                        }}
+                    >
+                        PLAYER_WALKED_THROUGH_DOOR
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_DIED");
+                        }}
+                    >
+                        PLAYER_DIED
+                    </Button>
+                </>
+            );
+        }
+
+        if (state.matches("playing.level3")) {
+            return (
+                <>
+                    <p>State: Playing.level3</p>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_GOT_TREASURE");
+                        }}
+                    >
+                        PLAYER_GOT_TREASURE
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            send("PLAYER_DIED");
+                        }}
+                    >
+                        PLAYER_DIED
+                    </Button>
+                </>
+            );
+        }
     }
     if (state.matches("gameOver")) {
         return (
