@@ -6,6 +6,11 @@ import { Button } from "../Button";
 import { GameCompleteScreen } from "../GameCompleteScreen";
 import { GameOverScreen } from "../GameOverScreen";
 import { HomeScreen } from "../HomeScreen";
+import Level1BackgroundPng from "../../images/level1Background.png";
+import Level2BackgroundPng from "../../images/level2Background.png";
+import Level3BackgroundPng from "../../images/level3Background.png";
+import { LevelBackgroundImage } from "../LevelBackgroundImage";
+import { Grid } from "../Grid";
 
 export interface PropsType {
     fastForwardEvents?: GameEventType[];
@@ -49,6 +54,11 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
                     >
                         PLAYER_DIED
                     </Button>
+                    <LevelBackgroundImage
+                        src={Level1BackgroundPng}
+                        alt="Dungeon Room"
+                    />
+                    <Grid />
                 </>
             );
         }
@@ -71,6 +81,11 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
                     >
                         PLAYER_DIED
                     </Button>
+                    <LevelBackgroundImage
+                        src={Level2BackgroundPng}
+                        alt="Dungeon Room"
+                    />
+                    <Grid />
                 </>
             );
         }
@@ -93,6 +108,11 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
                     >
                         PLAYER_DIED
                     </Button>
+                    <LevelBackgroundImage
+                        src={Level3BackgroundPng}
+                        alt="Dungeon Room"
+                    />
+                    <Grid />
                 </>
             );
         }
