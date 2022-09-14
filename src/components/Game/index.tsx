@@ -1,22 +1,19 @@
 import { useMachine } from "@xstate/react";
 import { gameMachine } from "../../machines/gameMachine";
 import { Button } from "../Button";
-
+import { GameCompleteScreen } from "../GameCompleteScreen";
+import { GameOverScreen } from "../GameOverScreen";
+import { HomeScreen } from "../HomeScreen";
 export const Game = () => {
     const [state, send] = useMachine(gameMachine);
 
     if (state.matches("home")) {
         return (
-            <>
-                <p>State: Home</p>
-                <Button
-                    onClick={() => {
-                        send("START_BUTTON_CLICKED");
-                    }}
-                >
-                    START_BUTTON_CLICKED
-                </Button>
-            </>
+            <HomeScreen
+                onClickStartGameButton={() => {
+                    send("START_BUTTON_CLICKED");
+                }}
+            />
         );
     }
     if (state.matches("playing")) {
@@ -42,30 +39,20 @@ export const Game = () => {
     }
     if (state.matches("gameOver")) {
         return (
-            <>
-                <p>State: Game Over</p>
-                <Button
-                    onClick={() => {
-                        send("RESTART_BUTTON_CLICKED");
-                    }}
-                >
-                    RESTART_BUTTON_CLICKED
-                </Button>
-            </>
+            <GameOverScreen
+                onClickRestartGameButton={() => {
+                    send("RESTART_BUTTON_CLICKED");
+                }}
+            />
         );
     }
     if (state.matches("gameComplete")) {
         return (
-            <>
-                <p>State: Game Complete</p>
-                <Button
-                    onClick={() => {
-                        send("HOME_BUTTON_CLICKED");
-                    }}
-                >
-                    HOME_BUTTON_CLICKED
-                </Button>
-            </>
+            <GameCompleteScreen
+                onClickGameHomeButton={() => {
+                    send("HOME_BUTTON_CLICKED");
+                }}
+            />
         );
     }
 
